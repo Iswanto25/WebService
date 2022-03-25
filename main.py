@@ -24,7 +24,7 @@ def auth():
         User.query.update({'token': token})
         db.session.commit()
         return make_response(jsonify({"Token API":token}),200)
-    return jsonify({"msg":"Mengambil Info Token Gagal"})
+    return jsonify({"msg":"Token Failled"})
 
 @app.route('/api/v2/users/info', methods=['POST'])
 def users_info():
@@ -33,7 +33,7 @@ def users_info():
     if acc:
         return acc.username 
     else:
-        return 'salah input token'
+        return 'token anda salah'
 
 if __name__ == '__main__':
     app.run(debug=True, port=4000)
